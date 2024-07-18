@@ -1,9 +1,12 @@
 import streamlit as st
 import numpy as np
 import joblib
+from sklearn.preprocessing import StandardScaler
 
+# Load the model and the scaler
+model = joblib.load('prediction.pkl')
+scaler = joblib.load('scaler.pkl')
 
-model = joblib.load('model.pkl')
 
 # Streamlit UI
 st.title('Titanic Survival Prediction')
@@ -23,15 +26,15 @@ Embarked = {'Southampton': 0, 'Cherbourg': 1, 'Queenstown': 2}[Embarked]
 
 # Prepare input data for prediction
 input_data = np.array([Pclass, Sex, Age, SibSp, Parch, Fare, Embarked]).reshape(1, -1)
+input_data_scaled = scaler.transform(input_data)
+
 
 # Prediction button
 if st.button('Predict'):
-  
-
     # Prediction
-    prediction = model.predict(input_data)
-    prediction_proba = model.predict_proba(input_data)
+    prediction = model.predict(input_data_scaled)
+    prediction_proba = model.predict_proba(input_data_scaled)
 
     # Display the result
     st.write(f'Survival Prediction: {"Survived" if prediction[0] == 1 else "Not Survived"}')
-    st.write(f'Prediction Probability: {prediction_proba[0][1]:.4f} for Survived')
+    #st.write(f'Prediction Probability: {prediction_proba[0][1]:.4f} for Survived')
