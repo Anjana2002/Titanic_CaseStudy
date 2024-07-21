@@ -1,7 +1,7 @@
 
 # Titanic Survival Prediction
 This project aims to predict the survival of passengers on the Titanic using machine learning techniques. It involves data preprocessing, exploratory data analysis (EDA), model building, evaluation, and deployment using Streamlit.
-![App Screenshot](/home/anjana/Pictures/stream.png)
+![App Screenshot](./stream.png)
 
 ### Project Structure
 - test.ipynb: Jupyter Notebook containing data preprocessing, EDA, and model building.
