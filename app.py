@@ -14,15 +14,15 @@ st.title('Titanic Survival Prediction')
 # User input
 Pclass = st.selectbox('Ticket Class', [1, 2, 3])
 Sex = st.selectbox('Sex', ['Male', 'Female'])
-Age = st.number_input('Age', min_value=0.42, max_value=80.0, value=22.0)
+Age = st.number_input('Age',min_value=0, max_value=100,  value=0)
 SibSp = st.number_input('Number of Siblings/Spouses Aboard', min_value=0, max_value=8, value=1)
 Parch = st.number_input('Number of Parents/Children Aboard', min_value=0, max_value=6, value=0)
 Fare = st.number_input('Passenger Fare', min_value=0.0, max_value=512.3292, value=7.25)
 Embarked = st.selectbox('Port of Embarkation', ['Southampton', 'Cherbourg', 'Queenstown'])
 
 # Convert user input to numerical values
-Sex = 0 if Sex == 'Male' else 1
-Embarked = {'Southampton': 0, 'Cherbourg': 1, 'Queenstown': 2}[Embarked]
+Sex = 1 if Sex == 'Male' else 0
+Embarked = {'Southampton': 2, 'Cherbourg': 0, 'Queenstown': 1}[Embarked]
 
 # Prepare input data for prediction
 input_data = np.array([Pclass, Sex, Age, SibSp, Parch, Fare, Embarked]).reshape(1, -1)
